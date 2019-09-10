@@ -1,15 +1,24 @@
 <ion-header>
     <ion-toolbar>
         <ion-title>chat</ion-title>
+
+        <img src="https://img.icons8.com/material-sharp/48/000000/user-female-circle.png" (click)="profile()" class="profile">
+
+
+
+
+        <img src="https://img.icons8.com/metro/52/000000/logout-rounded-left.png" (click)="logoO()" class="logoo">
+
+
+
+
+
+
     </ion-toolbar>
 </ion-header>
 
 <ion-content>
-    <div class="image">
-        <ion-icon name="camera"></ion-icon>
-    </div>
-    <p>{{Username}}
-    </p>
+
 
 
     <div class="chat" *ngFor="let chat of chatref|async ">
@@ -34,5 +43,6 @@
 
         </ion-icon>
     </ion-button>
+
 
 </ion-footer>

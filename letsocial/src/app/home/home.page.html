@@ -1,17 +1,17 @@
 <ion-header>
-    <ion-toolbar>
+    <ion-toolbar color="medium">
         <ion-title>
             Ionic Blank
         </ion-title>
     </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content color="medium">
 
     <div class="container-fluid">
         <ion-item class="input-group-text">
             <ion-label position="floating">Username </ion-label>
-            <ion-input [(ngModel)]="Username" type="text"></ion-input>
+            <ion-input class="input1" [(ngModel)]="Username" type="text"></ion-input>
         </ion-item>
 
         <ion-item class="input-group-text">
@@ -28,14 +28,14 @@
 
     </div>
     <div text-center>
-        <ion-button (click)="signup()">signup</ion-button>
+        <ion-button (click)="signup()" expand="full" fill="outline" color="danger">signup</ion-button>
     </div>
     <br>
 
     <div text-center>
         <b>or</b>
         <br>
-        <ion-button (click)="goto_login()" fill="clear">login</ion-button>
+        <ion-button (click)="goto_login()" fill="clear" expand="full" fill="outline" color="danger">login</ion-button>
     </div>
 
 </ion-content>

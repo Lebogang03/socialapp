@@ -1,0 +1,18 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>profile</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+    <div padding text-center>
+        <img src="{{photoURL}}" width="150" height="200" accept=".png,.jpg">
+        <br>
+        <br> name: {{name}}
+        <input type="file" (change)="upload($event)" accept=".png,.jpg" />
+    </div>
+
+
+
+</ion-content>

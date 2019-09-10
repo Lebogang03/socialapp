@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AuthService } from 'src/app/servece/auth.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import * as firebase from 'firebase';
 
 @Component({
   selector: 'app-chat',
@@ -20,10 +21,11 @@ export class ChatPage implements OnInit {
   uid:string;
 
   constructor(private fire:AngularFirestore, private chatapp:AuthService,
-    private route:ActivatedRoute,  private afAuth: AngularFireAuth) {
+    private route:ActivatedRoute,  private afAuth: AngularFireAuth,private router:Router) {
 
-      this.uid=localStorage.getItem('chat');
-      this.chatref=this.fire.collection('chat').valueChanges();
+      // this.uid=localStorage.getItem('chat');
+      this.uid=this.afAuth.auth.currentUser.uid;
+       this.chatref=this.fire.collection('chat', ref=>ref.orderBy('TimeStamp')).valueChanges()
      }
 
 
@@ -35,15 +37,26 @@ export class ChatPage implements OnInit {
   Send(){
     console.log()
     if(this.text!=''){
-      this.fire.collection('chat').add({
+       this.fire.collection('chat').add({
         Userid:this.afAuth.auth.currentUser.uid,
-        Name:this.afAuth.auth.currentUser.displayName,
+         Name:this.afAuth.auth.currentUser.displayName,
         Message:this.text,
-        
+        TimeStamp:firebase.firestore.FieldValue.serverTimestamp(),
       });
       this.text="";
     }
     
+  
+    
   }
 
+  profile(){
+    this.router.navigateByUrl('profile')
+  }
+
+  //    logoO(){
+  //    this.chatapp.logout();
+  // }
+
+  
 }

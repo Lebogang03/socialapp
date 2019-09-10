@@ -4,6 +4,7 @@ import{AngularFirestore} from '@angular/fire/firestore';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { AuthService } from '../servece/auth.service';
+import { firestore } from 'firebase';
 
 @Component({
   selector: 'app-home',
@@ -23,6 +24,16 @@ export class HomePage {
  signup(){
    this.afAuth.auth.createUserWithEmailAndPassword(this.Email,this.pdw).then(()=> {
      localStorage.setItem('userid',this.afAuth.auth.currentUser.uid);
+     this.fire.collection('chat').doc(this.afAuth.auth.currentUser.uid).set({
+       displayName:this.Username,
+       uid:this.afAuth.auth.currentUser.uid,
+       Timestamp:firestore.FieldValue.serverTimestamp(),
+       Email:this.Email,
+       photoURL:''
+    }).catch(error=>{
+      alert(error.message)
+    })
+     
      this.afAuth.auth.currentUser.updateProfile({
        displayName:this.Username,
        photoURL:''

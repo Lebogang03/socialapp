@@ -16,23 +16,24 @@ import { AuthService } from './servece/auth.service';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFireStorageModule, AngularFireStorage } from '@angular/fire/storage';
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBPuLtG6HsZFZooqwdP4K1bmjQqopZ7Aiw",
-  authDomain: "newuser-f1d2a.firebaseapp.com",
-  databaseURL: "https://newuser-f1d2a.firebaseio.com",
-  projectId: "newuser-f1d2a",
-  storageBucket: "",
-  messagingSenderId: "84622886924",
-  appId: "1:84622886924:web:a0ee384acf9c43bc"
+  apiKey: "AIzaSyCcVnfFt0eGgkEFiLO79XBUxRdQSI_VEhU",
+  authDomain: "users-9418b.firebaseapp.com",
+  databaseURL: "https://users-9418b.firebaseio.com",
+  projectId: "users-9418b",
+  storageBucket: "users-9418b.appspot.com",
+  messagingSenderId: "1078824787252",
+  appId: "1:1078824787252:web:2c03b22901fdda61449961"
 };
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,
-   HttpClientModule, AngularFireModule.initializeApp(firebaseConfig),
-   AngularFireAuthModule,HttpClientModule,AngularFirestoreModule.enablePersistence()],
+   HttpClientModule, AngularFireModule.initializeApp(firebaseConfig,'newuser-f1d2a'),
+   AngularFireAuthModule,HttpClientModule,AngularFireStorageModule,AngularFirestoreModule.enablePersistence()],
   providers: [
     StatusBar,
     SplashScreen,
